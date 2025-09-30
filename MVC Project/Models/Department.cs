@@ -1,14 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MVC_Project.Models
+public class Department
 {
-    public class Department
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = default!;
+    public int Id { get; set; }
 
-        [ForeignKey("Manager")]
-        public int? ManagerId { get; set; }
-        public Instractor? Manager { get; set; }
-    }
+    [Required, StringLength(100)]
+    public string Name { get; set; } = default!;
+
+    [ForeignKey("Manager")]
+    public int? ManagerId { get; set; }
+    public Instractor? Manager { get; set; }
 }

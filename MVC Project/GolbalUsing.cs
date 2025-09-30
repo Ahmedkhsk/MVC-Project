@@ -8,3 +8,4 @@ global using System.ComponentModel.DataAnnotations.Schema;
 global using MVC_Project.Repository;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.Rendering;
+global using System.ComponentModel.DataAnnotations;

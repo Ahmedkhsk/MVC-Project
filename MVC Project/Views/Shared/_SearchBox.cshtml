@@ -1,0 +1,21 @@
+﻿<div class="mb-3" style="max-width: 400px;">
+    <input type="text" id="searchBox" class="form-control" placeholder="Search..." />
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchBox = document.getElementById("searchBox");
+        const dataTable = document.getElementById("dataTable");
+
+        if (searchBox && dataTable) {
+            searchBox.addEventListener("keyup", function () {
+                let searchValue = this.value.toLowerCase();
+                let rows = dataTable.querySelectorAll("tbody tr");
+                rows.forEach(row => {
+                    let rowText = row.textContent.toLowerCase();
+                    row.style.display = rowText.includes(searchValue) ? "" : "none";
+                });
+            });
+        }
+    });
+</script>

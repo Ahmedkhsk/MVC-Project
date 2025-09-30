@@ -7,8 +7,11 @@
 <a class="btn btn-primary" asp-action="Add">
     Add Course
 </a>
+
 <br />
 <br />
+
+@await Html.PartialAsync("_SearchBox")
 
 @if (!Model.Any())
 {
@@ -19,7 +22,7 @@
 }
 else
 {
-    <table class="table table-bordered table-hover text-center">
+    <table class="table table-bordered table-hover text-center" id="dataTable">
         <thead>
             <tr>
                 <th>ID</th>
@@ -57,3 +60,7 @@ else
         </tbody>
     </table>
 }
+
+
+
+

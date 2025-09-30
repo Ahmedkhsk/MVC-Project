@@ -8,7 +8,7 @@ namespace MVC_Project.Models
         public string Name { get; set; } = default!;
 
         [ForeignKey("Manager")]
-        public int ManagerId { get; set; }
-        public Instractor Manager { get; set; } = default!;
+        public int? ManagerId { get; set; }
+        public Instractor? Manager { get; set; }
     }
 }

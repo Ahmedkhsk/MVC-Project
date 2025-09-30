@@ -3,6 +3,7 @@ using MVC_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Project.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250930011616_UpdateManagerID")]
+    partial class UpdateManagerID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,8 +33,7 @@ namespace MVC_Project.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Degree")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
@@ -40,8 +42,7 @@ namespace MVC_Project.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("MinimumDegree")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -52,26 +53,6 @@ namespace MVC_Project.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Courses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Degree = 100m,
-                            DepartmentId = 1,
-                            Hours = 3,
-                            MinimumDegree = 50m,
-                            Name = "Algorithms"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Degree = 100m,
-                            DepartmentId = 2,
-                            Hours = 3,
-                            MinimumDegree = 50m,
-                            Name = "Linear Algebra"
-                        });
                 });
 
             modelBuilder.Entity("MVC_Project.Models.CourseStudents", b =>
@@ -86,8 +67,7 @@ namespace MVC_Project.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Degree")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
@@ -99,22 +79,6 @@ namespace MVC_Project.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("CourseStudents");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CourseId = 1,
-                            Degree = 80m,
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CourseId = 2,
-                            Degree = 95m,
-                            StudentId = 2
-                        });
                 });
 
             modelBuilder.Entity("MVC_Project.Models.Department", b =>
@@ -139,18 +103,6 @@ namespace MVC_Project.Migrations
                         .HasFilter("[ManagerId] IS NOT NULL");
 
                     b.ToTable("Departments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Computer Science"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Mathematics"
-                        });
                 });
 
             modelBuilder.Entity("MVC_Project.Models.Instractor", b =>
@@ -180,36 +132,13 @@ namespace MVC_Project.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Salary")
-                        .HasPrecision(12, 2)
-                        .HasColumnType("decimal(12,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CourseId");
 
                     b.ToTable("Instractors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Cairo",
-                            CourseId = 1,
-                            DepartmentId = 1,
-                            Image = "ahmed.jpg",
-                            Name = "Dr. Ahmed",
-                            Salary = 15000m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "Alex",
-                            CourseId = 2,
-                            DepartmentId = 2,
-                            Image = "mona.jpg",
-                            Name = "Dr. Mona",
-                            Salary = 12000m
-                        });
                 });
 
             modelBuilder.Entity("MVC_Project.Models.Student", b =>
@@ -228,8 +157,7 @@ namespace MVC_Project.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Grade")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -240,24 +168,6 @@ namespace MVC_Project.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Giza",
-                            DepartmentId = 1,
-                            Grade = 85m,
-                            Name = "Ali"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "Cairo",
-                            DepartmentId = 2,
-                            Grade = 90m,
-                            Name = "Sara"
-                        });
                 });
 
             modelBuilder.Entity("MVC_Project.Models.Course", b =>

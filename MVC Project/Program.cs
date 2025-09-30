@@ -9,6 +9,9 @@ namespace MVC_Project
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+
             builder.Services.AddDbContext<Context>
             (
               options => options.UseSqlServer(builder.Configuration.GetConnectionString("Db"))

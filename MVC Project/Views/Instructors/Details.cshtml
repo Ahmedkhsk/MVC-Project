@@ -1,0 +1,14 @@
+﻿@model Instractor
+@{
+    ViewData["Title"] = "Instructor Details";
+}
+
+<h1>Instructor Details</h1>
+<div class="card p-3">
+    <h4>ID: @Model.Id</h4>
+    <h4>Name: @Model.Name</h4>
+    <h4>Address: @Model.Address</h4>
+    <h4>Salary: @Model.Salary</h4>
+    <h4>Department: @Model.Department.Name</h4>
+    <h4>Course Assigned: @Model.Course.Name</h4>
+</div>

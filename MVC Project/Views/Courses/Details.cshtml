@@ -1,0 +1,15 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<h1>Course Details</h1>
+
+<div class="card p-3">
+    <h4>ID: @Model.Id</h4>
+    <h4>Name: @Model.Name</h4>
+    <h4>Maximum Degree: @Model.Degree</h4>
+    <h4>Minimum Degree: @Model.MinimumDegree</h4>
+    <h4>Academic Hours: @Model.Hours</h4>
+    <h4>Department: @Model.Department.Name</h4>
+</div>

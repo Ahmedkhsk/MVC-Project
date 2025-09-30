@@ -11,6 +11,9 @@ namespace MVC_Project
 
             builder.Services.AddScoped<IStudentRepository, StudentRepository>();
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<IInstructorRepository, InstructorRepository>();
+
 
             builder.Services.AddDbContext<Context>
             (

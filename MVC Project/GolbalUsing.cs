@@ -1,5 +1,10 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using MVC_Project.Models;
+global using MVC_Project.ViewModel.Course;
 global using MVC_Project.ViewModel.Student;
+global using MVC_Project.ViewModel.Department;
+global using MVC_Project.ViewModel.Instructor;
 global using System.ComponentModel.DataAnnotations.Schema;
 global using MVC_Project.Repository;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;

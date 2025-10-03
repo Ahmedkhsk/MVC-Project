@@ -11,3 +11,6 @@ global using Microsoft.AspNetCore.Mvc.Rendering;
 global using System.ComponentModel.DataAnnotations;
 global using MVC_Project.Repository.Interfaces;
 global using MVC_Project.Repository.Implementations;
+global using MVC_Project.Filters;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using MVC_Project.Middlewares;

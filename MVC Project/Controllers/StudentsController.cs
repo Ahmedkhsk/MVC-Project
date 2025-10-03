@@ -1,5 +1,6 @@
 ﻿namespace MVC_Project.Controllers
 {
+    [AuthorizeStudentFilter]
     public class StudentsController : Controller
     {
         private readonly IStudentRepository _studentRepository;

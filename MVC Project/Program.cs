@@ -21,6 +21,8 @@ namespace MVC_Project
 
             var app = builder.Build();
 
+            app.UseMiddleware<RequestLoggingMiddleware>();
+
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");

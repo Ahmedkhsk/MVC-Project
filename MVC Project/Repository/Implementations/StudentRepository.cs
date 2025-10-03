@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace MVC_Project.Repository
+﻿namespace MVC_Project.Repository.Implementations
 {
     public class StudentRepository : IStudentRepository
     {

@@ -1,0 +1,35 @@
+﻿@model CreateCourseStudentsVM
+@{
+    ViewData["Title"] = "Add Student to Course";
+}
+
+<h1>Add Student to Course</h1>
+
+<form asp-action="Add" asp-controller="CourseStudents" method="post">
+    <div class="mb-3">
+        <label asp-for="CourseId" class="form-label">Course</label>
+        <select asp-for="CourseId" class="form-select" asp-items="ViewBag.Courses">
+            <option value="">-- Select Course --</option>
+        </select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <br />
+
+    <div class="mb-3">
+        <label asp-for="StudentId" class="form-label">Student</label>
+        <select asp-for="StudentId" class="form-select" asp-items="ViewBag.Students">
+            <option value="">-- Select Student --</option>
+        </select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <br />
+
+    <div class="mb-3">
+        <label asp-for="Degree" class="form-label">Degree</label>
+        <input asp-for="Degree" class="form-control" placeholder="Enter Degree" />
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

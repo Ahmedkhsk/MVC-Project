@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-public class Department
+﻿public class Department
 {
     public int Id { get; set; }
 

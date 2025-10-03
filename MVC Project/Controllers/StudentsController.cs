@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MVC_Project.ViewModel.Student;
-using System.Threading.Tasks;
-
-namespace MVC_Project.Controllers
+﻿namespace MVC_Project.Controllers
 {
     public class StudentsController : Controller
     {

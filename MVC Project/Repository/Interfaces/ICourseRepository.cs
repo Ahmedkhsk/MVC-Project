@@ -1,4 +1,4 @@
-﻿namespace MVC_Project.Repository
+﻿namespace MVC_Project.Repository.Interfaces
 {
     public interface ICourseRepository
     {

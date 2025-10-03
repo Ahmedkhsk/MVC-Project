@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MVC_Project.Models;
-using MVC_Project.ViewModel.Course;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace MVC_Project.Repository
+﻿namespace MVC_Project.Repository.Implementations
 {
     public class CourseRepository : ICourseRepository
     {

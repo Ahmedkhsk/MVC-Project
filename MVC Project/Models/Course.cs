@@ -1,6 +1,4 @@
-﻿
-
-namespace MVC_Project.Models
+﻿namespace MVC_Project.Models
 {
     public class Course
     {

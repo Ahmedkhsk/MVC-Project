@@ -1,0 +1,12 @@
+[2025-10-03 12:42:25] Path: /, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/css/main.css, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/js/jquery.scrollex.min.js, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/js/jquery.scrolly.min.js, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/css/fontawesome-all.min.css, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/js/browser.min.js, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/js/breakpoints.min.js, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/js/util.js, User: Anonymous
+[2025-10-03 12:42:26] Path: /assets/js/main.js, User: Anonymous
+[2025-10-03 12:42:28] Path: /assets/webfonts/fa-solid-900.woff2, User: Anonymous
+[2025-10-03 12:42:28] Path: /assets/webfonts/fa-brands-400.woff2, User: Anonymous
+[2025-10-03 12:42:31] Path: /favicon.ico, User: Anonymous

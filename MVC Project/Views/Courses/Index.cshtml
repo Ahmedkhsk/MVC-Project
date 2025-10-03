@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<Course>
 @{
     ViewData["Title"] = "Courses Index";
+    var selectedCourseId = ViewBag.SelectedCourseId as int?;
 }
 
 <h1>Courses Index</h1>
-<a class="btn btn-primary" asp-action="Add">
-    Add Course
-</a>
+<a class="btn btn-primary" asp-action="Add">Add Course</a>
 
 <br />
 <br />
@@ -32,6 +31,7 @@ else
                 <th>Hours</th>
                 <th>Department</th>
                 <th>Actions</th>
+                <th>Join Status</th>   
             </tr>
         </thead>
         <tbody>
@@ -55,12 +55,21 @@ else
                             Details
                         </a>
                     </td>
+                    <td>
+                        @if (selectedCourseId == item.Id)
+                        {
+                            <span class="badge bg-success">Joined</span>
+                        }
+                        else
+                        {
+                            <form asp-action="Join" method="post" style="display:inline;">
+                                <input type="hidden" name="courseId" value="@item.Id" />
+                                <button type="submit" class="btn btn-secondary">Join</button>
+                            </form>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
-
-
-
-

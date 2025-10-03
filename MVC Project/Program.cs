@@ -19,9 +19,17 @@ namespace MVC_Project
               options => options.UseSqlServer(builder.Configuration.GetConnectionString("Db"))
             );
 
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); 
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             var app = builder.Build();
 
-            app.UseMiddleware<RequestLoggingMiddleware>();
+            //app.UseMiddleware<RequestLoggingMiddleware>();
 
             if (!app.Environment.IsDevelopment())
             {
@@ -31,7 +39,7 @@ namespace MVC_Project
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.MapStaticAssets();

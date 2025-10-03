@@ -13,8 +13,12 @@
 
         public IActionResult Index()
         {
-            return View("Index", _courseRepository.GetAll());
+            var courses = _courseRepository.GetAll();
+            var selectedCourseId = HttpContext.Session.GetInt32("SelectedCourseId");
+            ViewBag.SelectedCourseId = selectedCourseId;
+            return View("Index", courses);
         }
+
 
         [HttpGet]
         public IActionResult Details(int id)
@@ -96,5 +100,14 @@
             }
             return NotFound();
         }
+
+        [HttpPost]
+        public IActionResult Join(int courseId)
+        {
+            HttpContext.Session.SetInt32("SelectedCourseId", courseId);
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

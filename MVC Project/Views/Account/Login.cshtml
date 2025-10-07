@@ -1,0 +1,22 @@
+﻿@model LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login Screen</h1>
+
+<form asp-action="Login" asp-controller="Account" method="post">
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div> <br />
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div><br />
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

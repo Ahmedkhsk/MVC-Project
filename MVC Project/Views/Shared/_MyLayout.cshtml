@@ -37,21 +37,62 @@
 
         <nav id="nav">
             <ul class="links">
-                <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Students" ? "active" : "")">
-                    <a asp-controller="Students" asp-action="Index" class="nav-link text-dark">Student</a>
-                </li>
-                <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Courses" ? "active" : "")">
-                    <a asp-controller="Courses" asp-action="Index" class="nav-link text-dark">Course</a>
-                </li>
-                <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Departments" ? "active" : "")">
-                    <a asp-controller="Departments" asp-action="Index" class="nav-link text-dark">Department</a>
-                </li>
-                <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Instructors" ? "active" : "")">
-                    <a asp-controller="Instructors" asp-action="Index" class="nav-link text-dark">Instructors</a>
-                </li>
-                <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "CourseStudents" ? "active" : "")">
-                    <a asp-controller="CourseStudents" asp-action="Index" class="nav-link text-dark">CourseStudents</a>
-                </li>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active" : "")">
+                        <a asp-controller="Account" asp-action="Login" class="nav-link text-dark">Login</a>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Register" ? "active" : "")">
+                        <a asp-controller="Account" asp-action="Register" class="nav-link text-dark">Register</a>
+                    </li>
+                }
+                else
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Departments" ? "active" : "")">
+                            <a asp-controller="Departments" asp-action="Index" class="nav-link text-dark">Departments</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Courses" ? "active" : "")">
+                            <a asp-controller="Courses" asp-action="Index" class="nav-link text-dark">Courses</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Instructors" ? "active" : "")">
+                            <a asp-controller="Instructors" asp-action="Index" class="nav-link text-dark">Instructors</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Students" ? "active" : "")">
+                            <a asp-controller="Students" asp-action="Index" class="nav-link text-dark">Students</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Courses" ? "active" : "")">
+                            <a asp-controller="CourseStudents" asp-action="Index" class="nav-link text-dark">Add StudentCourse</a>
+                        </li>
+                    }
+                    if (User.IsInRole("HR"))
+                    {
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Instructors" ? "active" : "")">
+                            <a asp-controller="Instructors" asp-action="Index" class="nav-link text-dark">Instructors</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Students" ? "active" : "")">
+                            <a asp-controller="Students" asp-action="Index" class="nav-link text-dark">Students</a>
+                        </li>
+                    }
+                    if (User.IsInRole("Instructor"))
+                    {
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Courses" ? "active" : "")">
+                            <a asp-controller="Courses" asp-action="Index" class="nav-link text-dark">Courses</a>
+                        </li>
+                    }
+                    if (User.IsInRole("Student"))
+                    {
+                        <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Courses" ? "active" : "")">
+                            <a asp-controller="Courses" asp-action="Index" class="nav-link text-dark">My Courses</a>
+                        </li>
+                    }
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                            <button type="submit" class="nav-link btn btn-link text-dark" style="display:inline;">Logout</button>
+                        </form>
+                    </li>
+                }
             </ul>
             <ul class="icons">
                 <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>

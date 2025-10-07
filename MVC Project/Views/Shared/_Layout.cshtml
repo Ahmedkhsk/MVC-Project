@@ -20,24 +20,43 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Student</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Courses" asp-action="Index">Course</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Departments" asp-action="Index">Department</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Instructors" asp-action="Index">Instructors</a>
-                        </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        }
+                        else
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Departments" asp-action="Index">Departments</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Courses" asp-action="Index">Courses</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Instructors" asp-action="Index">Instructors</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Students" asp-action="Index">Students</a></li>
+                            }
+                            if (User.IsInRole("HR"))
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Instructors" asp-action="Index">Instructors</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Students" asp-action="Index">Students</a></li>
+                            }
+                            if (User.IsInRole("Instructor"))
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Courses" asp-action="Index">Courses</a></li>
+                            }
+                            if (User.IsInRole("Student"))
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Courses" asp-action="Index">My Courses</a></li>
+                            }
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="nav-link btn btn-link text-dark" style="display:inline;">Logout (@User.Identity.Name)</button>
+                                </form>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

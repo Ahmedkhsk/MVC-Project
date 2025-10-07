@@ -1,5 +1,6 @@
 ﻿namespace MVC_Project.Controllers
 {
+    [Authorize(Roles = "Admin,HR,Instructor")]
     public class InstructorsController : Controller
     {
         private readonly IInstructorRepository _instructorRepository;

@@ -1,0 +1,5 @@
+@* _DeleteButtonPartial.cshtml *@
+@model dynamic
+<a class="btn btn-danger" href="#" onclick="if(confirm('Are you sure you want to delete this item?')) { window.location.href='@Url.Action(ViewData["DeleteAction"].ToString(), new { id = ViewData["DeleteId"] })'; } return false;">
+    <i class="bi bi-trash3"></i> Delete
+</a>

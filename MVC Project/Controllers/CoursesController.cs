@@ -1,5 +1,8 @@
-﻿namespace MVC_Project.Controllers
+﻿
+
+namespace MVC_Project.Controllers
 {
+    [Authorize(Roles = "Admin,HR,Instructor,Student")]
     public class CoursesController : Controller
     {
         private readonly ICourseRepository _courseRepository;

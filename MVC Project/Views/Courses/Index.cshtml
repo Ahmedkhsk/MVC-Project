@@ -5,9 +5,11 @@
 }
 
 <h1>Courses Index</h1>
-<a class="btn btn-primary" asp-action="Add">Add Course</a>
+@if (User.IsInRole("Admin") || User.IsInRole("HR"))
+{
+    <a class="btn btn-primary" asp-action="Add">Add Course</a>
+}
 
-<br />
 <br />
 
 @await Html.PartialAsync("_SearchBox")
@@ -48,9 +50,11 @@ else
                         <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">
-                            <i class="bi bi-trash3"></i> Delete
-                        </a>
+                        @{
+                            ViewData["DeleteAction"] = "Delete";
+                            ViewData["DeleteId"] = item.Id;
+                        }
+                        @await Html.PartialAsync("~/Views/Shared/_DeleteButtonPartial.cshtml")
                         <a class="btn btn-outline-dark" asp-action="Details" asp-route-id="@item.Id">
                             Details
                         </a>

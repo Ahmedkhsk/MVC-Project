@@ -1,5 +1,6 @@
 ﻿namespace MVC_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DepartmentsController : Controller
     {
         private readonly IDepartmentRepository _departmentRepository;

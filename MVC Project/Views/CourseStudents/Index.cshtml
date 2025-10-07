@@ -4,10 +4,10 @@
 }
 
 <h1>CourseStudents Index</h1>
-<a class="btn btn-primary" asp-action="Add">
-    Add CourseStudent
-</a>
-<br />
+@if (User.IsInRole("Admin") || User.IsInRole("HR"))
+{
+    <a class="btn btn-primary" asp-action="Add">CourseStudent</a>
+}
 <br />
 
 @if (!Model.Any())
